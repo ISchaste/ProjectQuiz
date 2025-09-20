@@ -1,0 +1,17 @@
+{% if progress %}
+<h3>Прогресс:</h3>
+<div style="width:300px; margin:10px auto; background:#ddd; border-radius:4px; overflow:hidden;">
+    {% set completed = (progress.emoji|int + progress.splash|int + progress.classic|int) %}
+    {% set percent = completed * 33 %}
+    <div style="width:{{ percent }}%;background:green;height:20px;"></div>
+</div>
+<table border="1" style="margin:auto;">
+    <tr><th>Этап</th><th>Статус</th></tr>
+    <tr><td>Эмодзи</td><td>{% if progress.emoji %}✅{% else %}❌{% endif %}</td></tr>
+    <tr><td>Сплеш-арт</td><td>{% if progress.splash %}✅{% else %}❌{% endif %}</td></tr>
+    <tr><td>Классика</td><td>{% if progress.classic %}✅{% else %}❌{% endif %}</td></tr>
+</table>
+{% if progress.emoji and progress.splash and progress.classic %}
+<p style="color:green; font-weight:bold;">🎉 Ты прошёл все этапы!</p>
+{% endif %}
+{% endif %}

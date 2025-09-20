@@ -1,0 +1,65 @@
+{
+  "emoji": {
+    "char": {
+      "id": 9,
+      "name_ru": "Сушан",
+      "gender": "женский",
+      "path": "Охота",
+      "element": "Физическое",
+      "rarity": 4,
+      "patch": "1.0",
+      "avatar_url": "https://www.prydwen.gg/static/feedcd896cee4288044dbf9c315ca2f9/b26e2/1206.webp",
+      "emoji_set": [
+        "🏹",
+        "🗡️",
+        "💥",
+        "💨",
+        "🦅"
+      ],
+      "splash_img_url": "https://www.prydwen.gg/static/b6f5ff92c1a26b3502d65edf9a037869/cf6d0/27_full.webp"
+    },
+    "last_update": "2025-09-20"
+  },
+  "splash": {
+    "char": {
+      "id": 8,
+      "name_ru": "Сампо",
+      "gender": "мужской",
+      "path": "Небытие",
+      "element": "Ветренное",
+      "rarity": 4,
+      "patch": "1.0",
+      "avatar_url": "https://www.prydwen.gg/static/2269e8d1134c31590127852b17e97dae/b26e2/1108.webp",
+      "emoji_set": [
+        "🍃",
+        "⚔️",
+        "💨",
+        "🪓",
+        "🩸"
+      ],
+      "splash_img_url": "https://www.prydwen.gg/static/f8e75db831bcfe66b9f02dd44474cf01/cf6d0/19_full.webp"
+    },
+    "last_update": "2025-09-20"
+  },
+  "classic": {
+    "char": {
+      "id": 8,
+      "name_ru": "Сампо",
+      "gender": "мужской",
+      "path": "Небытие",
+      "element": "Ветренное",
+      "rarity": 4,
+      "patch": "1.0",
+      "avatar_url": "https://www.prydwen.gg/static/2269e8d1134c31590127852b17e97dae/b26e2/1108.webp",
+      "emoji_set": [
+        "🍃",
+        "⚔️",
+        "💨",
+        "🪓",
+        "🩸"
+      ],
+      "splash_img_url": "https://www.prydwen.gg/static/f8e75db831bcfe66b9f02dd44474cf01/cf6d0/19_full.webp"
+    },
+    "last_update": "2025-09-20"
+  }
+}

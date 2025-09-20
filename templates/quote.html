@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Цитата — угадай персонажа</h2>
+
+<p><em>"{{ quote }}"</em></p>
+
+{% if attempts > 0 and not correct %}
+<form method="post" id="quote-form" style="position:relative;">
+    <input type="hidden" name="answer" value="{{ answer }}">
+    <input type="hidden" name="attempts" value="{{ attempts }}">
+    <input type="hidden" name="audio" value="{{ audio }}">
+    <input type="hidden" name="quote" value="{{ quote }}">
+    <input type="text" class="char-input" name="guess" placeholder="Введите имя персонажа" autocomplete="off">
+    <div class="search-suggestions" style="display:none;"></div>
+</form>
+<p>Осталось попыток: {{ attempts }}</p>
+{% endif %}
+
+{% if correct %}
+    <p style="color:green;">Верно! Это {{ answer }}</p>
+{% elif attempts == 0 %}
+    <p style="color:red;">Не угадал! Это был {{ answer }}</p>
+    <audio controls src="{{ audio }}"></audio>
+{% endif %}
+{% endblock %}

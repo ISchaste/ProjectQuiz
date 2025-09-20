@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Добро пожаловать в ХСРДЛ!</h2>
+<p>Пройди все 3 этапа, чтобы выиграть 🎯</p>
+
+{% if not user %}
+    <p style="color:red;">Войдите в аккаунт, чтобы начать игру</p>
+{% endif %}
+
+<!-- Кнопка Начать -->
+{% if user %}
+<p>
+    <a href="/classic" style="
+        display:inline-block;
+        background:#007bff;
+        color:white;
+        padding:12px 20px;
+        border-radius:6px;
+        text-decoration:none;
+        font-size:18px;
+    ">🚀 Начать</a>
+</p>
+{% endif %}
+
+<!-- Прогресс -->
+{% include "progress_table.html" %}
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Эмодзи — угадай персонажа</h2>
+
+{% if not done %}
+<p style="font-size:48px;">
+{% for i in range(step) %}
+    {{ emojis[i] }}
+{% endfor %}
+</p>
+<form method="post" style="position:relative;">
+    <input type="hidden" name="answer" value="{{ answer }}">
+    <input type="hidden" name="emojis" value="{{ emojis|join(',') }}">
+    <input type="hidden" name="step" value="{{ step }}">
+    <input type="text" class="char-input" name="guess" placeholder="Введите имя персонажа" autocomplete="off" data-mode="emoji">
+    <div class="search-suggestions" style="display:none;"></div>
+</form>
+{% else %}
+<p style="color:green;font-weight:bold;">✅ Правильно! Это {{ answer }}</p>
+<p><a href="/splash" class="next-btn">➡ Перейти к следующему этапу</a></p>
+{% endif %}
+
+{% if guess and not correct %}
+    {% if step < emojis|length %}
+        <p style="color:red;">❌ Неверно! Открыт новый эмодзи.</p>
+    {% else %}
+        <p style="color:red;">❌ Не угадал. Это был {{ answer }}</p>
+    {% endif %}
+{% endif %}
+
+<hr>
+<h3>Комментарии</h3>
+{% if user %}
+<form id="comment-form">
+    <input type="text" id="comment-input" placeholder="Оставьте комментарий" required style="width:300px;">
+    <button type="submit">Отправить</button>
+</form>
+{% else %}
+<p style="color:gray;">Войдите, чтобы оставить комментарий</p>
+{% endif %}
+<div id="comments"></div>
+
+<script>
+const ws = new WebSocket(`ws://${location.host}/ws/comments`);
+ws.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    if (data.type === "history") {
+        document.getElementById("comments").innerHTML = "";
+        data.messages.forEach(m => appendMessage(m));
+    } else if (data.type === "new_message") {
+        appendMessage(data.message);
+    }
+};
+function appendMessage(m) {
+    let p = document.createElement("p");
+    p.textContent = m.user + ": " + m.text;
+    document.getElementById("comments").appendChild(p);
+}
+document.getElementById("comment-form")?.addEventListener("submit", e => {
+    e.preventDefault();
+    let msg = { user: "{{ user }}", text: document.getElementById("comment-input").value };
+    ws.send(JSON.stringify(msg));
+    document.getElementById("comment-input").value = "";
+});
+</script>
+
+<hr>
+{% include "progress_table.html" %}
+{% endblock %}

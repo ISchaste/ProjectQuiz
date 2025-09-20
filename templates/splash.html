@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Сплеш-арт — угадай персонажа</h2>
+
+<style>
+    .splash-container {
+        width: 300px;
+        height: 300px;
+        background-image: url('{{ splash }}');
+        background-size: {{ zoom }}%;
+        background-position: {{ offset_x }}% {{ offset_y }}%;
+        background-repeat: no-repeat;
+        border: 2px solid #000;
+        margin: 10px auto;
+    }
+</style>
+
+<div class="splash-container"></div>
+
+{% if not done %}
+<form method="post" style="margin-top:15px;">
+    <input type="hidden" name="answer" value="{{ answer }}">
+    <input type="hidden" name="splash" value="{{ splash }}">
+    <input type="hidden" name="zoom" value="{{ zoom }}">
+    <input type="hidden" name="offset_x" value="{{ offset_x }}">
+    <input type="hidden" name="offset_y" value="{{ offset_y }}">
+    <input type="text" class="char-input" name="guess" placeholder="Введите имя персонажа" autocomplete="off" style="width:300px;" data-mode="splash">
+    <div class="search-suggestions" style="display:none;"></div>
+</form>
+{% else %}
+<p style="color:green;font-weight:bold;">✅ Правильно! Это {{ answer }}</p>
+<p><a href="/classic" class="next-btn">➡ Перейти к следующему этапу</a></p>
+{% endif %}
+
+{% if guess and not correct %}
+    {% if zoom > 100 %}
+        <p style="color:red;">❌ Неверно! Изображение стало более видимым.</p>
+    {% else %}
+        <p style="color:red;">❌ Не угадал. Это был {{ answer }}</p>
+    {% endif %}
+{% endif %}
+
+<hr>
+<h3>Комментарии</h3>
+{% if user %}
+<form id="comment-form">
+    <input type="text" id="comment-input" placeholder="Оставьте комментарий" required style="width:300px;">
+    <button type="submit">Отправить</button>
+</form>
+{% else %}
+<p style="color:gray;">Войдите, чтобы оставить комментарий</p>
+{% endif %}
+<div id="comments"></div>
+
+<script>
+const ws = new WebSocket(`ws://${location.host}/ws/comments`);
+ws.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    if (data.type === "history") {
+        document.getElementById("comments").innerHTML = "";
+        data.messages.forEach(m => appendMessage(m));
+    } else if (data.type === "new_message") {
+        appendMessage(data.message);
+    }
+};
+function appendMessage(m) {
+    let p = document.createElement("p");
+    p.textContent = m.user + ": " + m.text;
+    document.getElementById("comments").appendChild(p);
+}
+document.getElementById("comment-form")?.addEventListener("submit", e => {
+    e.preventDefault();
+    let msg = { user: "{{ user }}", text: document.getElementById("comment-input").value };
+    ws.send(JSON.stringify(msg));
+    document.getElementById("comment-input").value = "";
+});
+</script>
+
+<hr>
+{% include "progress_table.html" %}
+{% endblock %}

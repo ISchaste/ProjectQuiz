@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Классика — угадай персонажа</h2>
+
+{% if not done %}
+<form method="post" id="classic-form" style="position:relative;">
+    <input type="text" class="char-input" name="character" placeholder="Введите имя персонажа" autocomplete="off" data-mode="classic">
+    <div class="search-suggestions" style="display:none;"></div>
+</form>
+{% else %}
+<p style="color:green;font-weight:bold;">✅ Ты угадал персонажа!</p>
+<p><a href="/emoji" class="next-btn">➡ Перейти к следующему этапу</a></p>
+{% endif %}
+
+{% if history %}
+<table border="1" style="margin:auto;">
+    <tr>
+        <th>Имя</th>
+        <th>Пол</th>
+        <th>Путь</th>
+        <th>Стихия</th>
+        <th>Редкость</th>
+        <th>Патч</th>
+    </tr>
+    {% for h in history %}
+    <tr>
+        <td><img src="{{ h.avatar }}" width="40"> {{ h.name }}</td>
+        <td style="background-color:{{ 'lightgreen' if h.gender_match else '#ffcccc' }}">{{ h.gender }}</td>
+        <td style="background-color:{{ 'lightgreen' if h.path_match else '#ffcccc' }}">{{ h.path }}</td>
+        <td style="background-color:{{ 'lightgreen' if h.element_match else '#ffcccc' }}">{{ h.element }}</td>
+        <td style="background-color:{{ 'lightgreen' if h.rarity_match else '#ffcccc' }}">{{ h.rarity }}</td>
+        <td style="background-color:{{ 'lightgreen' if h.patch_match else '#ffcccc' }}">{{ h.patch }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+<hr>
+<h3>Комментарии</h3>
+{% if user %}
+<form id="comment-form">
+    <input type="text" id="comment-input" placeholder="Оставьте комментарий" required style="width:300px;">
+    <button type="submit">Отправить</button>
+</form>
+{% else %}
+<p style="color:gray;">Войдите, чтобы оставить комментарий</p>
+{% endif %}
+<div id="comments"></div>
+
+<script>
+const ws = new WebSocket(`ws://${location.host}/ws/comments`);
+ws.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    if (data.type === "history") {
+        document.getElementById("comments").innerHTML = "";
+        data.messages.forEach(m => appendMessage(m));
+    } else if (data.type === "new_message") {
+        appendMessage(data.message);
+    }
+};
+function appendMessage(m) {
+    let p = document.createElement("p");
+    p.textContent = m.user + ": " + m.text;
+    document.getElementById("comments").appendChild(p);
+}
+document.getElementById("comment-form")?.addEventListener("submit", e => {
+    e.preventDefault();
+    let msg = { user: "{{ user }}", text: document.getElementById("comment-input").value };
+    ws.send(JSON.stringify(msg));
+    document.getElementById("comment-input").value = "";
+});
+</script>
+
+<hr>
+{% include "progress_table.html" %}
+{% endblock %}

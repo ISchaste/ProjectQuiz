@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name_ru": "Арлан",
+    "gender": "мужской",
+    "path": "Разрушение",
+    "element": "Электричество",
+    "rarity": 4,
+    "patch": "1.0",
+    "avatar_url": "https://www.prydwen.gg/static/a9ee487923945376b54d295123f2bbf4/b26e2/1008.webp",
+    "emoji_set": ["⚡","🗡️","🐺","💥","🩸"],
+    "splash_img_url": "https://www.prydwen.gg/static/ecef0bbb16cd6aba72101a795fe08e93/cf6d0/9_full.webp"
+  },
+  {
+    "id": 2,
+    "name_ru": "Аста",
+    "gender": "женский",
+    "path": "Гармония",
+    "element": "Огненное",
+    "rarity": 4,
+    "patch": "1.0",
+    "avatar_url": "https://www.prydwen.gg/static/ca470365c5ede3308cd8b14ce1989fe3/b26e2/1009.webp",
+    "emoji_set": ["🔥","🔭","📚","✨","👩‍🔬"],
+    "splash_img_url": "https://www.prydwen.gg/static/6c5362dea19b62160a3d8a776bfff37e/cf6d0/10_full.webp"
+  },
+  {
+    "id": 3,
+    "name_ru": "Дань Хэн",
+    "gender": "мужской",
+    "path": "Охота",
+    "element": "Ветренное",
+    "rarity": 4,
+    "patch": "1.0",
+    "avatar_url": "https://www.prydwen.gg/static/d3b737975ee520bf2ad2e0b726f37f66/b26e2/1002.webp",
+    "emoji_set": ["🍃","🗡️","💨","🏹","⚡"],
+    "splash_img_url": "https://www.prydwen.gg/static/78a6404252106144837fb74ad3774a9b/cf6d0/4_full.webp"
+  },
+  {
+    "id": 4,
+    "name_ru": "Сервал",
+    "gender": "женский",
+    "path": "Эрудиция",
+    "element": "Электричество",
+    "rarity": 4,
+    "patch": "1.0",
+    "avatar_url": "https://www.prydwen.gg/static/abd9f86cf72bfad6bfdbbabb7e59a004/b26e2/1103.webp",
+    "emoji_set": ["⚡","📖","🦁","🧠","✨"],
+    "splash_img_url": "https://www.prydwen.gg/static/4e292baa485bd7f7ec570b0a00605acd/cf6d0/14_full.webp"
+  },
+  {
+    "id": 5,
+    "name_ru": "Тиньюнь",
+    "gender": "женский",
+    "path": "Гармония",
+    "element": "Электричество",
+    "rarity": 4,
+    "patch": "1.0",
+    "avatar_url": "https://www.prydwen.gg/static/b85651f49ebbab337ebb27c6ddf2067e/b26e2/1202.webp",
+    "emoji_set": ["⚡","🌟","✨","🎵","🛡️"],
+    "splash_img_url": "https://www.prydwen.gg/static/fa18172a868f8fe5268af86ae17f34cb/cf6d0/25_full.webp"
+  },
+  {
+    "id": 6,
+    "name_ru": "Миша",
+    "gender": "мужской",
+    "path": "Разрушение",
+    "element": "Ледяное",
+    "rarity": 4,
+    "patch": "1.0",
+    "avatar_url": "https://www.prydwen.gg/static/b9f3b26e4c1e75360926d2b456058128/b26e2/48_card.webp",
+    "emoji_set": ["❄️","🗡️","💥","🛡️","🐾"],
+    "splash_img_url": "https://www.prydwen.gg/static/affc3a063636436e3517bad868564247/3cd29/misha_full.webp"
+  },
+  {
+    "id": 7,
+    "name_ru": "Март 7",
+    "gender": "женский",
+    "path": "Сохранение",
+    "element": "Ледяное",
+    "rarity": 4,
+    "patch": "1.0",
+    "avatar_url": "https://www.prydwen.gg/static/cbedcf848398c7ef8b46be33e117453f/b26e2/1001.webp",
+    "emoji_set": ["❄️","🤖","⚙️","🛡️","💫"],
+    "splash_img_url": "https://www.prydwen.gg/static/66dfd6e26da58c08aa94315dbb288c5c/cf6d0/3_full.webp"
+  },
+  {
+    "id": 8,
+    "name_ru": "Сампо",
+    "gender": "мужской",
+    "path": "Небытие",
+    "element": "Ветренное",
+    "rarity": 4,
+    "patch": "1.0",
+    "avatar_url": "https://www.prydwen.gg/static/2269e8d1134c31590127852b17e97dae/b26e2/1108.webp",
+    "emoji_set": ["🍃","⚔️","💨","🪓","🩸"],
+    "splash_img_url": "https://www.prydwen.gg/static/f8e75db831bcfe66b9f02dd44474cf01/cf6d0/19_full.webp"
+  },
+  {
+    "id": 9,
+    "name_ru": "Сушан",
+    "gender": "женский",
+    "path": "Охота",
+    "element": "Физическое",
+    "rarity": 4,
+    "patch": "1.0",
+    "avatar_url": "https://www.prydwen.gg/static/feedcd896cee4288044dbf9c315ca2f9/b26e2/1206.webp",
+    "emoji_set": ["🏹","🗡️","💥","💨","🦅"],
+    "splash_img_url": "https://www.prydwen.gg/static/b6f5ff92c1a26b3502d65edf9a037869/cf6d0/27_full.webp"
+  },
+  {
+    "id": 10,
+    "name_ru": "Пела",
+    "gender": "женский",
+    "path": "Небытие",
+    "element": "Ледяное",
+    "rarity": 4,
+    "patch": "1.0",
+    "avatar_url": "https://www.prydwen.gg/static/e2f11b84485d0f5183c4c54c705f1992/b26e2/1106.webp",
+    "emoji_set": ["❄️","🗡️","🧊","🛡️","✨"],
+    "splash_img_url": "https://www.prydwen.gg/static/b2e816a75e4a878058f8d806a2ad495b/cf6d0/17_full.webp"
+  }
+]

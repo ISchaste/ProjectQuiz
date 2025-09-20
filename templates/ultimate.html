@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Умение — угадай персонажа по ультимейту</h2>
+
+<img src="{{ ultimate }}" width="300" alt="Ультимейт персонажа">
+
+<form method="post" id="ultimate-form" style="position:relative;">
+    <input type="hidden" name="answer" value="{{ answer }}">
+    <input type="hidden" name="ultimate" value="{{ ultimate }}">
+    <input type="text" class="char-input" name="guess" placeholder="Введите имя персонажа" autocomplete="off">
+    <div class="search-suggestions" style="display:none;"></div>
+</form>
+
+{% if guess %}
+    {% if correct %}
+        <p style="color:green;">Верно! Это {{ answer }}</p>
+    {% else %}
+        <p style="color:red;">Неверно! Попробуй снова.</p>
+    {% endif %}
+{% endif %}
+{% endblock %}
